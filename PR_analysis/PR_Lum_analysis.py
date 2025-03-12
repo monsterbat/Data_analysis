@@ -53,10 +53,10 @@ def select_files_and_generate_excel():
 
     workbook = Workbook()
     sheet = workbook.active
-    sheet.title = "TXT檔案內容"
-    timestamp = datetime.now().strftime("%Y%m%d%H%M")
-    
-    sheet['A1'] = "檔名"           # 保留
+    sheet.title = "PR data"
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+
+    sheet['A1'] = "File name"           # 保留
     sheet['B1'] = "Expl. Time"  # 第6行
     sheet['C1'] = "Data/Time"     # 第7行
     sheet['D1'] = "Aperture"      # 第8行
@@ -82,11 +82,11 @@ def select_files_and_generate_excel():
         # 第 8 行 → D 欄
         sheet[f'D{idx}'] = read_line_substr_scale(file_path, 8, 10, 18, "words")
         # 第 371 行 → E 欄
-        sheet[f'E{idx}'] = read_line_substr_scale(file_path, 371, 3, 8, 10000)
+        sheet[f'E{idx}'] = read_line_substr_scale(file_path, 371, 3, 9, 10000)
         # 第 372 行 → F 欄
-        sheet[f'F{idx}'] = read_line_substr_scale(file_path, 372, 3, 8, 10000)
+        sheet[f'F{idx}'] = read_line_substr_scale(file_path, 372, 3, 9, 10000)
         # 第 373 行 → G 欄
-        sheet[f'G{idx}'] = read_line_substr_scale(file_path, 373, 3, 8, 10000)
+        sheet[f'G{idx}'] = read_line_substr_scale(file_path, 373, 3, 9, 10000)
         # 第 377 行 → H 欄
         sheet[f'H{idx}'] = read_line_substr_scale(file_path, 377, 4, 10, 1)
         # 第 378 行 → I 欄
@@ -103,9 +103,9 @@ def select_files_and_generate_excel():
         print(f"✅ 已處理: {file_name}")
 
         
-        output_filename = f"Result_{timestamp}.xlsx"
-        workbook.save(output_filename)
-        print(f"\n✅ 完成！結果已儲存為 {output_filename}")
+    output_filename = f"PR_result_{timestamp}.xlsx"
+    workbook.save(output_filename)
+    print(f"\n✅ 完成！結果已儲存為 {output_filename}")
 
 if __name__ == "__main__":
     select_files_and_generate_excel()
