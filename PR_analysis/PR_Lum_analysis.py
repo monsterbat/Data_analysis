@@ -54,7 +54,8 @@ def select_files_and_generate_excel():
     workbook = Workbook()
     sheet = workbook.active
     sheet.title = "TXT檔案內容"
-
+    timestamp = datetime.now().strftime("%Y%m%d%H%M")
+    
     sheet['A1'] = "檔名"           # 保留
     sheet['B1'] = "Expl. Time"  # 第6行
     sheet['C1'] = "Data/Time"     # 第7行
@@ -101,7 +102,7 @@ def select_files_and_generate_excel():
 
         print(f"✅ 已處理: {file_name}")
 
-        timestamp = datetime.now().strftime("%Y%m%d%H%M")
+        
         output_filename = f"Result_{timestamp}.xlsx"
         workbook.save(output_filename)
         print(f"\n✅ 完成！結果已儲存為 {output_filename}")
