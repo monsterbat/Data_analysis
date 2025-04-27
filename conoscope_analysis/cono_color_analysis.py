@@ -13,7 +13,6 @@ from openpyxl.utils import get_column_letter
 from datetime import datetime
 
 
-
 ###########################################
 #            ColorShift_Analysis          #
 ###########################################
